@@ -12,4 +12,6 @@ To run:
 bun run index.ts
 ```
 
-This project was created using `bun init` in bun v1.2.4. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## What?
+
+This projects reads the latest few messages from the configured Discord channels and generates atom and rss feeds :D

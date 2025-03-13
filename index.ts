@@ -19,3 +19,6 @@ const feed = new Feed(config.feed.options)
 await collect(feed, client)
 fs.writeFile('./out/rss.xml', feed.rss2())
 fs.writeFile('./out/atom.xml', feed.atom1())
+
+await client.destroy()
+process.exit(0)
