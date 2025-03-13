@@ -22,6 +22,7 @@ const feed = new Feed(config.feed.options)
 await collect(feed, client)
 
 const cwd = process.cwd()
+await fs.mkdir(`${cwd}/out`, { recursive: true })
 await Promise.all([
   fs.writeFile(`${cwd}/out/feed`, feed.rss2()),
   fs.writeFile(`${cwd}/out/rss.xml`, feed.rss2()),
