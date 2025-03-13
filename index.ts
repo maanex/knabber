@@ -22,10 +22,11 @@ const feed = new Feed(config.feed.options)
 await collect(feed, client)
 
 const cwd = process.cwd()
-console.log('CWD', cwd)
-fs.writeFile(`${cwd}/out/feed`, feed.rss2())
-fs.writeFile(`${cwd}/out/rss.xml`, feed.rss2())
-fs.writeFile(`${cwd}/out/atom.xml`, feed.atom1())
+await Promise.all([
+  fs.writeFile(`${cwd}/out/feed`, feed.rss2()),
+  fs.writeFile(`${cwd}/out/rss.xml`, feed.rss2()),
+  fs.writeFile(`${cwd}/out/atom.xml`, feed.atom1())
+])
 
 console.log('Done')
 await client.destroy()
