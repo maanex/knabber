@@ -13,6 +13,7 @@ client.on(Events.ClientReady, readyClient => {
   console.log(`Logged in as ${readyClient.user.tag}!`)
 })
 
+console.log('HECK YEA?', config.discord.token.slice(-8))
 await client.login(config.discord.token)
 
 const feed = new Feed(config.feed.options)
