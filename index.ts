@@ -9,16 +9,20 @@ const client = new Client({ intents: [
   GatewayIntentBits.GuildMessages,
 ] })
 
+const { promise: clientReady, resolve } = Promise.withResolvers()
 client.on(Events.ClientReady, readyClient => {
   console.log(`Logged in as ${readyClient.user.tag}!`)
+  resolve()
 })
 
 await client.login(config.discord.token)
+await clientReady
 
 const feed = new Feed(config.feed.options)
 await collect(feed, client)
 fs.writeFile('./out/rss.xml', feed.rss2())
 fs.writeFile('./out/atom.xml', feed.atom1())
 
+console.log('Done')
 await client.destroy()
 process.exit(0)
