@@ -17,7 +17,7 @@ export type Config = {
 
 //
 
-const host = 'http://localhost:3000/'
+const host = 'https://knabber.maanex.me/'
 
 export const config: Config = {
   discord: {
